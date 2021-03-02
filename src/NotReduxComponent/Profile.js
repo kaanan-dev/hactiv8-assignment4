@@ -4,7 +4,7 @@ import { ActionButton } from "./ChildActions/Index";
 const { Meta } = Card;
 
 const Profile = (props) =>  {
-  const [enabler, setEnabler] = useState([]);
+  const [enabler, setEnabler] = useState(false);
   useEffect(() => {
     if(props.children === 'Ahmad Anan R') {
       setEnabler({ ellipsis: true, setting:true, edit:true}); 
