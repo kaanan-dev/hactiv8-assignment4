@@ -5,11 +5,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <Profile>Barbatos</Profile>
-       <Profile>Freedom</Profile>
+       <Profile>Vaksin</Profile>
+       <Profile>Korona</Profile>
        <Profile>Ahmad Anan R</Profile>
        <Profile>Siapa Aja</Profile>
-       <Profile>Barbatos</Profile>
+       <Profile>Bebas</Profile>
       </header>
     </div>
   );

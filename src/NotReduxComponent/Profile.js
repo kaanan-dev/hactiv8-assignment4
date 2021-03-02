@@ -6,11 +6,19 @@ const { Meta } = Card;
 const Profile = (props) =>  {
   const [enabler, setEnabler] = useState(false);
   useEffect(() => {
-    if(props.children === 'Ahmad Anan R') {
-      setEnabler({ ellipsis: true, setting:true, edit:true}); 
-      return;
+    switch (props.children){
+      case 'Ahmad Anan R':
+        setEnabler({ ellipsis: false, setting:false, edit:true}); 
+        break;
+      case 'Bebas':
+        setEnabler({ ellipsis: true, setting:false, edit:true});
+        break;
+      case 'Korona':
+        setEnabler({ ellipsis: true, setting:true, edit:true});
+        break;
+        default:
+          setEnabler(false);
     }
-    setEnabler(false);
   }, [])
   
   return (
