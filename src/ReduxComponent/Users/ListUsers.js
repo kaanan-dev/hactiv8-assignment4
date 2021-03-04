@@ -1,18 +1,25 @@
-
-
 import { Button } from 'antd'
-import UserAction from '../../Services/Users/users.reducer';
+import { connect } from 'react-redux';
+import { incrementProcessing, decrementProcessing } from '../../Services/Users/users.reducer';
+import  Bills  from "../Bills/ListBills";
 
-
-
-const TableUsers = (props) => {
-
-    console.log("props", props);
-    return(
-        <Button onClick={UserAction} type="primary">
-            Base Button
-        </Button>
+const Users = (props) => {
+    return (
+        <>
+            <Button onClick={() => props.dispatch(incrementProcessing(1))} type="primary" shape="round" size={'large'} >
+                + , current: {props.state.users}
+            </Button>
+            <br />
+            <Button onClick={() => props.dispatch(decrementProcessing(1))} type="danger"  shape="round" size={'large'}>
+                - , current: {props.state.users}
+            </Button>
+            <br />
+            <Bills />
+            
+        </>
     )
 }
 
-export default TableUsers;
+export default connect(
+    (state) => ({ state }) //mapStateToProps
+    )(Users);

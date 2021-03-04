@@ -7,12 +7,13 @@ import 'antd/dist/antd.css';
 
 import { Provider } from "react-redux";
 import configureStore from "./store/store";
+import ListUsers from './ReduxComponent/Users/ListUsers';
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+    <App/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
