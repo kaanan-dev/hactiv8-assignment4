@@ -8,8 +8,8 @@ export const ActionButton = (props) => {
         { edit : <ActionEdit/>},
         { ellipsis:<ActionElipsis/> }
     ]
-  return props && _button.map((val, i) => {
-      let key = Object.keys(val);
-      if(props[key]) return val[key];
+  return props && _button.filter((val, i) => {
+    let key = Object.keys(val);
+    return props[key];
   });
 };
