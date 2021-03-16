@@ -1,48 +1,41 @@
+import { apiGET } from "../../Utils/api";
+import { Loading } from '../../Services/Global/loading.reducer';
+
+
 const GET_USERS = "USERS/GET_USERS";
-const INC_NUMBER = "USERS/INC_NUMBER";
-const DEC_NUMBER = "USERS/DEC_NUMBER";
-const MULTIPLICATION = "USERS/MULTIPLICATION";
 
 
 const reducer = (
-    state = 0,
+    state = [],
     action
 ) => {
     switch (action.type) {
         case GET_USERS:
-            return state;
-        case INC_NUMBER:
-            return state + action.payload;
-        case DEC_NUMBER:
-            return state - action.payload;
-        case MULTIPLICATION:
-            return state*action.payload;
+            return [...action.payload];
+        // return [ ...state, ...action.payload ];
         default:
             return state;
     }
 }
 
 
-export const incrementProcessing = (payload) => (
+export const getUsers = payload => (
     {
-        type: INC_NUMBER,
-        payload
-    }
-)
-
-export const decrementProcessing = (payload) => (
-    {
-        type: DEC_NUMBER,
-        payload
+        type: GET_USERS, payload
     }
 )
 
 
-export const multiplicationProcess = (payload) => (
-    {
-        type: MULTIPLICATION,
-        payload
-    }
-)
+export const UsersAction = {
+    getUsers: (query) =>
+        (dispatch) => {
+            dispatch(Loading.setCurrentState(true));
+            apiGET(`https://5d371ebf86300e0014b64ae7.mockapi.io/api/v1/users${query ?? ""}`).then((data) => {
+                dispatch(getUsers(data));
+                dispatch(Loading.setCurrentState(false));
+            })
+            
+        }
+}
 
 export default reducer;

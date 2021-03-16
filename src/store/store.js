@@ -6,6 +6,7 @@ import rootReducer from "./reducers";
 
 export default function configureStore(preloadedState) {
   const history = createBrowserHistory();
+  const middleWare = [thunkMiddleware.withExtraArgument];
   const store = createStore(rootReducer(history), preloadedState, applyMiddleware(thunkMiddleware));    
   return store;
 }
