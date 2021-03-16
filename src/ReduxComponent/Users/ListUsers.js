@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { UsersAction } from '../../Services/Users/users.reducer'
 import { useDebounce } from 'use-lodash-debounce'
+import { Skeleton } from 'antd';
 const { Search } = Input;
 const Users = ({ state, loading, dispatch }) => {
 
@@ -53,7 +54,7 @@ const Users = ({ state, loading, dispatch }) => {
                                 <Row>
                                     {
                                         loading ?
-                                            (<h4>Loading</h4>) :
+                                            (<Skeleton active={true}></Skeleton>) :
                                             state.length ?
                                                 state.map((val, index) => {
                                                     return (
