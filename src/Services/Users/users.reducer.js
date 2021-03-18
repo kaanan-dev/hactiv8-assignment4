@@ -27,14 +27,14 @@ export const getUsers = payload => (
 
 
 export const UsersAction = {
-    getUsers: (query) =>
+    getUsers: (query = '') =>
         (dispatch) => {
             dispatch(Loading.setCurrentState(true));
-            apiGET(`https://5d371ebf86300e0014b64ae7.mockapi.io/api/v1/users${query ?? ""}`).then((data) => {
+            apiGET(`https://5d371ebf86300e0014b64ae7.mockapi.io/api/v1/users${query}`).then((data) => {
                 dispatch(getUsers(data));
                 dispatch(Loading.setCurrentState(false));
             })
-            
+
         }
 }
 

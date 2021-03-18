@@ -17,7 +17,7 @@ const Users = ({ state, loading, dispatch }) => {
 
     useEffect(() => {
         console.log("query", query);
-        if(loading) return;
+        if (loading) return;
         if (!query) dispatch(UsersAction.getUsers());
         if (query)
             dispatch(UsersAction.getUsers(`?name=${query}`));
